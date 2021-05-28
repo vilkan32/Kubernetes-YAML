@@ -93,3 +93,7 @@ kubectl expose pod redis --port=6379 --name redis-service
 Reference:
 
 https://kubernetes.io/docs/reference/kubectl/conventions/
+
+configmap
+
+kubectl create configmap webapp-config-map --from-literal=APP_COLOR=darkblue
