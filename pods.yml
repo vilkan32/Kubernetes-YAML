@@ -9,3 +9,16 @@ spec:
   containers:
     - name: redis
       image: redis
+      env:
+        - name: APP_COLOR
+          value: pink
+        # valueFrom:
+        #   configMapKeyRef:
+        #     name: app-config
+        #     key: APP_COLOR
+        # valueFrom:
+        #   secretKeyRef:
+      envFrom:
+        - configMapRef:
+            name: app-config    #specific config map 
+       
