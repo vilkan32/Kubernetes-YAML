@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: event-simulator-pod
+spec:
+  containers:
+  - name: event-simulator
+    image: kodekloud/event-simulator
+  - name: image-processor
+    image: some-image-processor
+
+# kubectl logs -f event-simulator-pod event-simulator
+# first comes the name of the pod then the name of the container
