@@ -1,0 +1,23 @@
+kind: Pod
+metadata:
+  labels:
+    name: simple-webapp
+  name: simple-webapp-1
+  namespace: default
+spec:
+  containers:
+   - image: kodekloud/webapp-delayed-start
+     name: simple-webapp
+     ports:
+       - containerPort: 8080
+     livenessProbe:
+       httpGet:
+         path: /live
+         port: 8080
+     readinessProbe:
+       httpGet:
+          path: /ready
+          port: 8080
+       initialDelaySeconds: 80
+       periodSeconds: 5
+       failureThreshold: 8
