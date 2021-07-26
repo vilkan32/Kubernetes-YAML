@@ -3,16 +3,21 @@ kind: NetworkPolicy
 metadata:
   name: db-policy
 spec:
-  podSelector:
+  podSelector: # selects the pod that the policy will apply to
     matchLabels:
       role: db
   policyTypes:
   - Ingress
   ingress:
   - from:
-    - podSelector:
+    - podSelector: # only the specific pod with the label can access 
         matchLabels:
           name: api-pod
+      namespaceSelector:
+        matchLabels:
+          name: prod
+    - ipBlock:
+        cidr: 192.168.5.10/32
     ports:
     - protocol: TCP
       port: 3306
